@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendly Integration</title>
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</head>
+<body>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/60c26f19-041c-405d-baea-02b013334618/webchat/config.js" defer></script>
+    <script>
+        // Load Calendly script
+        var script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        document.head.appendChild(script);
+
+        window.botpressWebChat.onEvent(
+          function (event) {
+            if (event.type === 'TRIGGER') {
+              Calendly.showPopupWidget('https://calendly.com/adimpactpro');
+            }
+          },
+          ['TRIGGER']
+        );
+    </script>
+</body>
+</html>
